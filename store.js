@@ -1,4 +1,5 @@
 import items from "./items.json"
+import formatCurrency from "./util/formatCurrency.js"
 
 
 const storeItemTemplate = document.querySelector("#store-item-template")
@@ -26,11 +27,7 @@ function renderStoreItem(item){
     image.src = `${IMAGE_URL}/${item.imageColor}/${item.imageColor}`
 
     const price = storeItem.querySelector("[data-price]")
-    const formatter = new Intl.NumberFormat(undefined, {
-        style: "currency", 
-        currency: "USD"
-    })
-    price.innerText = formatter.format(item.priceCents / 100)
+    price.innerText = formatCurrency(item.priceCents / 100)
     
 
     storeItemContainer.appendChild(storeItem)
